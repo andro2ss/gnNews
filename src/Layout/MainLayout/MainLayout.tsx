@@ -36,7 +36,10 @@ export const MainLayout = (props: IMainLayout) => {
       />
       <ContentBox>
         {!isMobile && <EmptySpace widthSpace={navigationWidth} />}
-        <Outlet />
+        <div>
+          <EmptySpace heightSpace={headerHeight} />
+          <Outlet />
+        </div>
       </ContentBox>
     </>
   );

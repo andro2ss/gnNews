@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { MainLayout } from "./Layout/MainLayout/MainLayout";
-import { FirstPage } from "./pages/FirstPage";
 import { Page404 } from "./pages/Page404";
 import { HeaderContent } from "./pages/commonItems/HeaderContent/HeaderContent";
 import { SidebarContent } from "./pages/commonItems/SidebarContent/SidebarContent";
+import { CountryNewsPage } from "./pages/CountryNewsPage/CountryNewsPage";
 
 export const App = () => {
   return (
@@ -18,7 +18,8 @@ export const App = () => {
             />
           }
         >
-          <Route path={"/"} element={<FirstPage />} />
+          <Route path={"/"} element={<CountryNewsPage />} />
+          <Route path={"/country/:kraj"} element={<CountryNewsPage />} />
         </Route>
         <Route path={"*"} element={<Page404 />} />{" "}
       </Routes>

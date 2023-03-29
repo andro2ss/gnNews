@@ -14,8 +14,8 @@ interface ICountryList extends IImageListItem {
 export const SidebarContent = () => {
   const navigate = useNavigate();
 
-  const handleOnClick = (countryCode: string) => {
-    navigate(`country/${countryCode}`);
+  const handleOnClick = (country: string, countryCode: string) => {
+    navigate(`country/${country}?countryCode=${countryCode}`);
   };
 
   const countryList: ICountryList[] = [
@@ -62,7 +62,9 @@ export const SidebarContent = () => {
         return (
           <Button
             key={country.countryCode}
-            onClick={() => handleOnClick(country.countryCode)}
+            onClick={() =>
+              handleOnClick(country.text as string, country.countryCode)
+            }
           >
             <ImageListItem
               alt={"country flag"}
