@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axiosHelper from "../../helpers/axiosHelper";
+import axiosHelper from "../../../helpers/axiosHelper";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { ListFormatType } from "../../../redux/reducers/listFormatReducer";
 
 export interface Article {
   source: {
@@ -20,6 +23,9 @@ export const useCountryNewsPage = () => {
   const [articleList, setArticleList] = useState<Article[]>([]);
   const [lastLocation, setLastLocation] = useState("");
   const [url, setUrl] = useState("");
+  const articleFormat: ListFormatType = useSelector(
+    (state: RootState) => state.listFormat.form
+  );
 
   const key = "88a33a74072c458792dd19acd38e8921";
   const location = useLocation();
@@ -60,5 +66,5 @@ export const useCountryNewsPage = () => {
     getArticleList().catch((error) => console.warn(error.message));
   }, [url]);
 
-  return { articleList };
+  return { articleList, articleFormat };
 };
