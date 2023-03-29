@@ -1,12 +1,16 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Drawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
+import { EmptySpace } from "../EmptySpace/EmptySpace";
+import { useDevice } from "../../hooks/useDevice";
 
 interface ISidebar {
   navigationWidth: number;
   container: (() => HTMLElement) | undefined;
   mobileOpen: boolean;
   handleSidebarToggle: () => void;
+  content?: ReactNode;
+  topFreeSpace?: number;
 }
 
 export const Sidebar = ({
@@ -14,45 +18,40 @@ export const Sidebar = ({
   container,
   mobileOpen,
   handleSidebarToggle,
+  content,
+  topFreeSpace,
 }: ISidebar) => {
-  const drawer = <div>bebechy drawer</div>;
+  const { isMobile } = useDevice();
 
   return (
-    <Box
-      component="nav"
-      sx={{ width: { sm: navigationWidth }, flexShrink: { sm: 0 } }}
-    >
-      <Drawer
-        container={container}
-        variant="temporary"
-        open={mobileOpen}
-        onClose={handleSidebarToggle}
-        ModalProps={{
-          keepMounted: true,
-        }}
-        sx={{
-          display: { xs: "block", sm: "none" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: navigationWidth,
-          },
-        }}
+    <>
+      <Box
+        component="nav"
+        sx={{ width: { sm: navigationWidth }, flexShrink: { sm: 0 } }}
       >
-        {drawer}
-      </Drawer>
-      <Drawer
-        variant="permanent"
-        sx={{
-          display: { xs: "none", sm: "block" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: navigationWidth,
-          },
-        }}
-        open
-      >
-        {drawer}
-      </Drawer>
-    </Box>
+        <Drawer
+          container={isMobile ? container : undefined}
+          variant={isMobile ? "temporary" : "permanent"}
+          open={isMobile ? mobileOpen : true}
+          onClose={isMobile ? handleSidebarToggle : undefined}
+          ModalProps={
+            isMobile
+              ? {
+                  keepMounted: true,
+                }
+              : undefined
+          }
+          sx={{
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: navigationWidth,
+            },
+          }}
+        >
+          <EmptySpace heightSpace={topFreeSpace} />
+          {content}
+        </Drawer>
+      </Box>
+    </>
   );
 };

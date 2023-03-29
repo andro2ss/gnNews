@@ -2,17 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import HomeIcon from "@mui/icons-material/Home";
 import { Box, Breadcrumbs, Button, IconButton, Modal } from "@mui/material";
-import { useHeaderItems } from "../useHeaderItems";
+import { useHeaderContent } from "./useHeaderContent";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
-export const HeaderItems = () => {
+export const HeaderContent = () => {
   const {
     handleHomeBtnClick,
     format,
     handleFormatChange,
     showModal,
     toggleModal,
-  } = useHeaderItems();
+  } = useHeaderContent();
 
   const style = {
     position: "absolute" as "absolute",

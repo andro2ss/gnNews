@@ -1,18 +1,19 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import styled from "styled-components";
-import { HeaderItems } from "./items/HeaderItems";
 
 interface IHeader {
+  id?: string;
   handleIconButtonOnClick: () => void;
+  content?: ReactNode;
 }
 
-export const Header = ({ handleIconButtonOnClick }: IHeader) => {
+export const Header = ({ handleIconButtonOnClick, content, id }: IHeader) => {
   return (
     <StyledHeader>
-      <AppBar position="fixed" className="section-header">
+      <AppBar position="fixed" className="section-header" id={id}>
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -22,7 +23,7 @@ export const Header = ({ handleIconButtonOnClick }: IHeader) => {
         >
           <MenuIcon />
         </IconButton>
-        <HeaderItems />
+        {content}
       </AppBar>
     </StyledHeader>
   );
