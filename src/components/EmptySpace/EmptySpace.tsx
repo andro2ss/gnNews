@@ -4,6 +4,7 @@ import styled from "styled-components";
 interface IEmptySpace {
   heightSpace?: number;
   widthSpace?: number;
+  className?: string;
 }
 
 export const EmptySpace = (props: IEmptySpace) => {
@@ -11,6 +12,7 @@ export const EmptySpace = (props: IEmptySpace) => {
 };
 
 const EmptyBox = styled.div<IEmptySpace>`
-  width: ${({ widthSpace }) => widthSpace ?? 0}px;
+  min-width: ${({ widthSpace }) => widthSpace ?? 0}px;
+  max-width: ${({ widthSpace }) => widthSpace ?? 0}px;
   height: ${({ heightSpace }) => heightSpace ?? 0}px;
 `;

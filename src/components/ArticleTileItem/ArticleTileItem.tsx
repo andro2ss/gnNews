@@ -1,5 +1,6 @@
 import { CardActionArea, CardContent, CardMedia } from "@mui/material";
 import styled from "styled-components";
+import newsImage from "../../assets/img/news.jpg";
 
 interface IArticleTileItem {
   title?: string;
@@ -19,20 +20,15 @@ export const ArticleTileItem = ({
   return (
     <StyledArticleTile className={"card-container article"}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={image}
-          alt="green iguana"
-        />
+        <CardMedia component="img" height="140" image={image ?? newsImage} />
         <CardContent>
           <h4>{title}</h4>
-          <p>{description}</p>
-          <div className="card-footer">
-            <span>{source}</span>
-            <span>{date}</span>
-          </div>
+          {description && <p>{description}</p>}
         </CardContent>
+        <div className="card-footer">
+          <span>{source}</span>
+          <span>{date}</span>
+        </div>
       </CardActionArea>
     </StyledArticleTile>
   );
@@ -40,12 +36,18 @@ export const ArticleTileItem = ({
 
 const StyledArticleTile = styled.div`
   &.card-container.article {
-    flex: 1 1 30%;
-    max-width: 30%;
+    width: 100%;
+    max-width: 250px;
     border: 1px solid rgba(0, 0, 25, 0.2);
     background: rgba(0, 0, 25, 0.1);
     border-radius: 0.5rem;
     overflow: hidden;
+  }
+
+  button {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   .MuiCardContent-root {
@@ -64,7 +66,10 @@ const StyledArticleTile = styled.div`
   }
 
   .card-footer {
+    margin-top: auto;
+    padding: 0.5rem;
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
 `;

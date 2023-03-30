@@ -47,8 +47,4 @@ export const MainLayout = (props: IMainLayout) => {
 
 const ContentBox = styled.div`
   display: flex;
-
-  div:last-child {
-    flex: 1;
-  }
 `;
