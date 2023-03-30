@@ -11,6 +11,7 @@ interface ISidebar {
   handleSidebarToggle: () => void;
   content?: ReactNode;
   topFreeSpace?: number;
+  bottomFreeSpace?: number;
 }
 
 export const Sidebar = ({
@@ -20,6 +21,7 @@ export const Sidebar = ({
   handleSidebarToggle,
   content,
   topFreeSpace,
+  bottomFreeSpace,
 }: ISidebar) => {
   const { isMobile } = useDevice();
 
@@ -50,6 +52,7 @@ export const Sidebar = ({
         >
           <EmptySpace heightSpace={topFreeSpace} />
           {content}
+          <EmptySpace heightSpace={bottomFreeSpace} />
         </Drawer>
       </Box>
     </>

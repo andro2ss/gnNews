@@ -5,9 +5,10 @@ import { Article } from "../hook/useCountryNewsPage";
 
 interface IListView {
   articleList?: Article[];
+  onArticleSelect?: (article?: Article) => void;
 }
 
-export const ListView = ({ articleList }: IListView) => {
+export const ListView = ({ articleList, onArticleSelect }: IListView) => {
   return (
     <StyledArticleList>
       {articleList &&
@@ -23,6 +24,7 @@ export const ListView = ({ articleList }: IListView) => {
               title={article.title as string}
               source={article.source.name as string}
               date={formattedDate}
+              onClick={() => onArticleSelect && onArticleSelect(article)}
             />
           );
         })}
@@ -31,7 +33,7 @@ export const ListView = ({ articleList }: IListView) => {
 };
 
 const StyledArticleList = styled.ol`
-  margin: 1rem 2rem 0 1rem;
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

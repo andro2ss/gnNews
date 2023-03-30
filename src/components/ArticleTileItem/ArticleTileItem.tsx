@@ -8,6 +8,7 @@ interface IArticleTileItem {
   date?: string;
   image?: string;
   description?: string;
+  onClick?: () => void;
 }
 
 export const ArticleTileItem = ({
@@ -16,10 +17,11 @@ export const ArticleTileItem = ({
   description,
   date,
   source,
+  onClick,
 }: IArticleTileItem) => {
   return (
     <StyledArticleTile className={"card-container article"}>
-      <CardActionArea>
+      <CardActionArea onClick={onClick}>
         <CardMedia component="img" height="140" image={image ?? newsImage} />
         <CardContent>
           <h4>{title}</h4>

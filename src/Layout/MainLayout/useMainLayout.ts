@@ -12,6 +12,8 @@ export const useMainLayout = (props: IMainLayout) => {
   const navigationWidth = 240;
   const headerHeight =
     document?.getElementById("mainLayout-header")?.offsetHeight;
+  const footerHeight =
+    document?.getElementById("mainLayout-footer")?.offsetHeight;
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -26,5 +28,6 @@ export const useMainLayout = (props: IMainLayout) => {
     container,
     mobileOpen,
     headerHeight,
+    footerHeight,
   };
 };

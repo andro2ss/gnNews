@@ -20,12 +20,31 @@ export interface Article {
 }
 
 export const useCountryNewsPage = () => {
+  const initArticle: Article = {
+    source: { id: null, name: null },
+    urlToImage: null,
+    url: null,
+    description: null,
+    publishedAt: null,
+    title: null,
+    author: null,
+    content: null,
+  };
+
+  const [showDetails, setShowDetails] = useState(false);
   const [articleList, setArticleList] = useState<Article[]>([]);
+  const [article, setArticle] = useState<Article>(initArticle);
   const [lastLocation, setLastLocation] = useState("");
   const [url, setUrl] = useState("");
   const articleFormat: ListFormatType = useSelector(
     (state: RootState) => state.listFormat.form
   );
+
+  const toggleShowDetails = (article?: Article) => {
+    if (article?.source?.id) setArticle(article);
+    else setArticle(initArticle);
+    setShowDetails(!showDetails);
+  };
 
   const key = "88a33a74072c458792dd19acd38e8921";
   const location = useLocation();
@@ -66,5 +85,11 @@ export const useCountryNewsPage = () => {
     getArticleList().catch((error) => console.warn(error.message));
   }, [url]);
 
-  return { articleList, articleFormat };
+  return {
+    articleList,
+    articleFormat,
+    showDetails,
+    toggleShowDetails,
+    article,
+  };
 };

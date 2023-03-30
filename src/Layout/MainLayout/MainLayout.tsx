@@ -15,6 +15,7 @@ export const MainLayout = (props: IMainLayout) => {
     container,
     mobileOpen,
     headerHeight,
+    footerHeight,
   } = useMainLayout(props);
   const { isMobile } = useDevice();
 
@@ -32,6 +33,7 @@ export const MainLayout = (props: IMainLayout) => {
         container={container}
         mobileOpen={mobileOpen}
         topFreeSpace={headerHeight}
+        bottomFreeSpace={footerHeight}
         content={props.sidebarContent}
       />
       <ContentBox>
@@ -39,12 +41,26 @@ export const MainLayout = (props: IMainLayout) => {
         <div>
           <EmptySpace heightSpace={headerHeight} />
           <Outlet />
+          <EmptySpace heightSpace={footerHeight} />
         </div>
       </ContentBox>
+      <Footer id={"mainLayout-footer"}>Stopka</Footer>
     </>
   );
 };
 
 const ContentBox = styled.div`
   display: flex;
+`;
+
+const Footer = styled.div`
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #1976d2;
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
 `;

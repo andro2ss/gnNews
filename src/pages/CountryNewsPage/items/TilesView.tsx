@@ -5,9 +5,10 @@ import { ArticleTileItem } from "../../../components/ArticleTileItem/ArticleTile
 
 interface ITilesView {
   articleList?: Article[];
+  onArticleSelect?: (article?: Article) => void;
 }
 
-export const TilesView = ({ articleList }: ITilesView) => {
+export const TilesView = ({ articleList, onArticleSelect }: ITilesView) => {
   return (
     <StyledArticleList>
       {articleList &&
@@ -25,6 +26,7 @@ export const TilesView = ({ articleList }: ITilesView) => {
               date={formattedDate}
               description={article.description as string}
               image={article.urlToImage as string}
+              onClick={() => onArticleSelect && onArticleSelect(article)}
             />
           );
         })}
@@ -32,8 +34,8 @@ export const TilesView = ({ articleList }: ITilesView) => {
   );
 };
 
-const StyledArticleList = styled.ol`
-  margin: 1rem 2rem 0 1rem;
+const StyledArticleList = styled.div`
+  margin: 1rem 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
