@@ -4,6 +4,7 @@ export interface IMainLayout {
   window?: () => Window;
   headerContent?: ReactNode;
   sidebarContent?: ReactNode;
+  footerContent?: ReactNode;
 }
 
 export const useMainLayout = (props: IMainLayout) => {

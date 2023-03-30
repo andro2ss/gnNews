@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Article } from "../hook/useCountryNewsPage";
 import { ArticleTileItem } from "../../../components/ArticleTileItem/ArticleTileItem";
+import langHelper from "../../../helpers/langHelper";
 
 interface ITilesView {
   articleList?: Article[];
@@ -16,7 +17,7 @@ export const TilesView = ({ articleList, onArticleSelect }: ITilesView) => {
         articleList.map((article) => {
           const formattedDate = new Date(
             article.publishedAt as string
-          ).toLocaleString();
+          ).toLocaleString(langHelper.currentLanguage());
 
           return (
             <ArticleTileItem

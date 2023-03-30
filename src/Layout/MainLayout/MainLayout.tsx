@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { EmptySpace } from "../../components/EmptySpace/EmptySpace";
 import React from "react";
 import { useDevice } from "../../hooks/useDevice";
+import { Footer } from "../../components/Footer/Footer";
 
 export const MainLayout = (props: IMainLayout) => {
   const {
@@ -44,23 +45,11 @@ export const MainLayout = (props: IMainLayout) => {
           <EmptySpace heightSpace={footerHeight} />
         </div>
       </ContentBox>
-      <Footer id={"mainLayout-footer"}>Stopka</Footer>
+      <Footer id={"mainLayout-footer"} content={props.footerContent} />
     </>
   );
 };
 
 const ContentBox = styled.div`
   display: flex;
-`;
-
-const Footer = styled.div`
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #1976d2;
-  z-index: 2000;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
 `;

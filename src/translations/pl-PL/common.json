@@ -1,0 +1,25 @@
+{
+  "select_lang": "Wybierz język",
+  "pl": "Polski",
+  "en": "Angielski",
+  "cancel": "Anuluj",
+  "list": "Lista",
+  "tiles": "Kafelki",
+  "empty_msg" : "Wybacz nic tu nie ma",
+  "goTo_article": "Idź do artykułu",
+  "source_address": "Adres źródła",
+  "content": "Treść",
+  "author": "Autor",
+  "source": "Źródło",
+  "page_not_found": "Nie znaleziono strony",
+  "back_home": "Wróć na stronę główną",
+  "article_amount": "Liczba artykułów",
+  "challenges": {
+    "difficulties_title": "Największa trudność",
+    "difficulties_text1": "Instalowanie wszystkich node modules",
+    "coolStuff_title": "Największa frajda",
+    "coolStuff_text1": "Sprawdzenie z czym się je vite",
+    "coolStuff_text2": "Uzasadnione gruntowanie podstaw",
+    "coolStuff_text3": "Potencjalna szansa na lepszą przyszłość :)"
+  }
+}

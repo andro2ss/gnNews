@@ -2,41 +2,44 @@ import React from "react";
 import { Button } from "@mui/material";
 import { Article } from "../hook/useCountryNewsPage";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 interface IArticleDetails {
   article: Article;
 }
 
 export const ArticleDetails = ({ article }: IArticleDetails) => {
+  const { t } = useTranslation(["common"]);
+
   return (
     <ArticleBox>
       {article?.author && (
         <div className={"box box-author"}>
-          <h4>Autor</h4>
+          <h4>{t("author")}</h4>
           <span>{article.author}</span>
         </div>
       )}
       {article?.content && (
         <div className={"box box-content"}>
-          <h4>Treść</h4>
+          <h4>{t("content")}</h4>
           <span>{article.content}</span>
         </div>
       )}
       {article?.url && (
         <>
           <div className={"box box-url"}>
-            <h4>Adres źródła</h4>
+            <h4>{t("source_address")}</h4>
             <span>{article.url}</span>
           </div>
           <div className={"box box-button"}>
             <Button onClick={() => article?.url && window.open(article?.url)}>
-              Idź do artykułu
+              {t("goTo_article")}
             </Button>
           </div>
         </>
       )}
       {!article?.url && !article?.content && !article?.author && (
-        <h3>Wybacz nic tu nie ma</h3>
+        <h3>{t("empty_msg")}</h3>
       )}
     </ArticleBox>
   );
@@ -48,7 +51,7 @@ const ArticleBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  overflow: scroll;
+  overflow: auto;
   max-height: calc(100vh - 200px);
 
   .box {

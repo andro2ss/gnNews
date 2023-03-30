@@ -5,6 +5,8 @@ import { Breadcrumbs, Button, IconButton } from "@mui/material";
 import { useHeaderContent } from "./useHeaderContent";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Modal } from "../../../components/Modal/Modal";
+import { useTranslation } from "react-i18next";
+import LanguageSelect from "../LanguageSelect/LanguageSelect";
 
 export const HeaderContent = () => {
   const {
@@ -14,6 +16,7 @@ export const HeaderContent = () => {
     showModal,
     toggleModal,
   } = useHeaderContent();
+  const { t } = useTranslation(["common"]);
 
   return (
     <StyledHeaderItems>
@@ -21,19 +24,22 @@ export const HeaderContent = () => {
         <Button startIcon={<HomeIcon />} onClick={handleHomeBtnClick}>
           gnNews
         </Button>
-        <Button onClick={handleFormatChange}>{format}</Button>
+        <Button onClick={handleFormatChange}>
+          {format === "list" ? t("list") : t("tiles")}
+        </Button>
         <IconButton onClick={toggleModal}>
           <MoreHorizIcon />
         </IconButton>
+        <LanguageSelect />
       </Breadcrumbs>
       <Modal showModal={showModal} onClose={toggleModal}>
         <StyledMessage>
-          <h3>Największa trudność:</h3>{" "}
-          <p>Instalowanie wszystkich node modules</p>
-          <h3>Największa frajda</h3>
-          <p>sprawdzenie z czym się je vite</p>
-          <p>uzasadnione gruntowanie podstaw</p>
-          <p>potencjalna szansa na lepszą przyszłość :)</p>
+          <h3>{t("challenges.difficulties_title")}</h3>{" "}
+          <p>{t("challenges.difficulties_text1")}</p>
+          <h3>{t("challenges.coolStuff_title")}</h3>
+          <p>{t("challenges.coolStuff_text1")}</p>
+          <p>{t("challenges.coolStuff_text2")}</p>
+          <p>{t("challenges.coolStuff_text3")}</p>
         </StyledMessage>
       </Modal>
     </StyledHeaderItems>

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { CardActionArea } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 interface IArticleListItem {
   title?: string;
@@ -15,12 +16,16 @@ export const ArticleListItem = ({
   date,
   onClick,
 }: IArticleListItem) => {
+  const { t } = useTranslation(["common"]);
+
   return (
     <StyledArticleListItem>
       <CardActionArea onClick={onClick}>
         <h4>{title}</h4>
         <div>
-          <span>Źródło: {source}</span>
+          <span>
+            {t("source")}: {source}
+          </span>
           <span>{date}</span>
         </div>
       </CardActionArea>

@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axiosHelper from "../../../helpers/axiosHelper";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { ListFormatType } from "../../../redux/reducers/listFormatReducer";
+import { setAmount } from "../../../redux/reducers/listAmountReducer";
 
 export interface Article {
   source: {
@@ -39,6 +40,11 @@ export const useCountryNewsPage = () => {
   const articleFormat: ListFormatType = useSelector(
     (state: RootState) => state.listFormat.form
   );
+  const dispatch = useDispatch();
+
+  const setArticleAmount = (articleAmount: number) => {
+    dispatch(setAmount(articleAmount));
+  };
 
   const toggleShowDetails = (article?: Article) => {
     if (article?.source?.id) setArticle(article);
@@ -77,6 +83,7 @@ export const useCountryNewsPage = () => {
     await axiosHelper.get(url).then((data) => {
       // @ts-ignore
       setArticleList(data?.data?.articles as Article[]);
+      setArticleAmount(data?.data?.articles?.length ?? 0);
     });
   }, [url]);
 

@@ -2,14 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export const Page404 = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation(["common"]);
+
   return (
     <ErrorContainer>
-      Page not found
+      {t("page_not_found")}
       <Button variant="outlined" onClick={() => navigate("/")}>
-        Return to Home
+        {t("back_home")}
       </Button>
     </ErrorContainer>
   );

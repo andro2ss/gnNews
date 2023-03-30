@@ -2,6 +2,7 @@ import React from "react";
 import { ArticleListItem } from "../../../components/ArticleListItem/ArticleListItem";
 import styled from "styled-components";
 import { Article } from "../hook/useCountryNewsPage";
+import langHelper from "../../../helpers/langHelper";
 
 interface IListView {
   articleList?: Article[];
@@ -16,7 +17,7 @@ export const ListView = ({ articleList, onArticleSelect }: IListView) => {
         articleList.map((article) => {
           const formattedDate = new Date(
             article.publishedAt as string
-          ).toLocaleString();
+          ).toLocaleString(langHelper.currentLanguage());
 
           return (
             <ArticleListItem

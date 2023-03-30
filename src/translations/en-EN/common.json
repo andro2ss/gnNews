@@ -1,0 +1,25 @@
+{
+  "select_lang": "Select language",
+  "pl": "Polish",
+  "en": "English",
+  "cancel": "Cancel",
+  "list": "List",
+  "tiles": "Tiles",
+  "empty_msg": "Sorry nothing here",
+  "goTo_article": "Go to article",
+  "source_address": "Source Address",
+  "content": "Content",
+  "author": "Author",
+  "source": "Source",
+  "page_not_found": "Page not found",
+  "back_home": "Return to Home",
+  "article_amount": "Article amount",
+  "challenges": {
+    "difficulties_title": "The biggest difficulty",
+    "difficulties_text1": "Installing all node modules",
+    "coolStuff_title": "The most fun",
+    "coolStuff_text1": "Checking vite",
+    "coolStuff_text2": "Legitimate priming of the bases",
+    "coolStuff_text3": "A potential opportunity for a better future :)"
+  }
+}
